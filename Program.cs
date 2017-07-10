@@ -5,8 +5,21 @@ namespace sets
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            //Function to Display for DRY sake
+            void DisplaySet(HashSet<string> set)
+            {
+                Console.WriteLine("*********");
+                foreach (string i in set)
+                {
+                    Console.WriteLine(" {0}", i);
+                }
+                Console.WriteLine("There are {0} cars on the Showroom", set.Count);
+                Console.WriteLine("*********");
+            }
+
+
             //Create an empty HashSet named Showroom that will contain strings.
             HashSet<string> Showroom = new HashSet<string>();
             //Add four of your favorite car model names to the set.
@@ -15,26 +28,11 @@ namespace sets
             Showroom.Add("TTRS");
             Showroom.Add("540C");
 
-            Console.WriteLine("***********");
-            foreach(string n in Showroom)
-            {
-                Console.WriteLine("{0}", n);
-            }
-            Console.WriteLine("***********");
-            //Print to the console how many cars are in your show room.
-            Console.WriteLine("There are {0} cars on the Showroom", Showroom.Count);
-            Console.WriteLine("***********");
+            DisplaySet(Showroom);
             //Pick one of the items in your show room and add it to the set again.
             Showroom.Add("TTRS");
             //Print your showroom again, and notice how there's still only one representation of that model in there.
-            Console.WriteLine("***********");
-            foreach(string n in Showroom)
-            {
-                Console.WriteLine("{0}", n);
-            }
-            Console.WriteLine("***********");
-            Console.WriteLine("There are {0} cars on the Showroom", Showroom.Count);
-            Console.WriteLine("***********");
+            DisplaySet(Showroom);
             //Create another set named UsedLot and add two more car model strings to it.
             HashSet<string> UsedLot = new HashSet<string>();
             UsedLot.Add("Impala");
@@ -42,25 +40,11 @@ namespace sets
             //Use the UnionWith() method on Showroom to add in the two models you added to UsedLot.
             Showroom.UnionWith(UsedLot);
             //Print to Show
-            Console.WriteLine("***********");
-            foreach(string n in Showroom)
-            {
-                Console.WriteLine("{0}", n);
-            }
-            Console.WriteLine("***********");
-            Console.WriteLine("There are {0} cars on the Showroom", Showroom.Count);
-            Console.WriteLine("***********");
+            DisplaySet(Showroom);
             //You've sold one of your cars. Remove it from the set with the Remove() method.
             Showroom.Remove("350Z");
             //Print to Show
-            Console.WriteLine("***********");
-            foreach(string n in Showroom)
-            {
-                Console.WriteLine("{0}", n);
-            }
-            Console.WriteLine("***********");
-            Console.WriteLine("There are {0} cars on the Showroom", Showroom.Count);
-            Console.WriteLine("***********");
+            DisplaySet(Showroom);
             //Now create another HashSet of cars in a variable Junkyard. Someone who owns a junkyard
             // full of old cars has approached you about buying the entire inventory. In the new set, 
             //add some different cars, but also add a few that are the same as in the Showroom set.
@@ -76,26 +60,12 @@ namespace sets
             Common.IntersectWith(Junkyard);
             
             //Write it Out
-            Console.WriteLine("***********");
-            foreach(string n in Common)
-            {
-                Console.WriteLine("{0}", n);
-            }
-            Console.WriteLine("***********");
-            Console.WriteLine("There are {0} cars on the Common", Common.Count);
-            Console.WriteLine("***********");
+            DisplaySet(Junkyard);
             //Now you're ready to buy the cars in the junkyard. Use the UnionWith() method to combine the junkyard into your showroom.
             
             Showroom.UnionWith(Junkyard);
             //Write it out
-            Console.WriteLine("***********");
-            foreach(string n in Showroom)
-            {
-                Console.WriteLine("{0}", n);
-            }
-            Console.WriteLine("***********");
-            Console.WriteLine("There are {0} cars on the Showroom", Showroom.Count);
-            Console.WriteLine("***********");
+            DisplaySet(Showroom);
             
             
         }
